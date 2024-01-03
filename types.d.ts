@@ -5,3 +5,10 @@ type ModalProps= {
 	onClose: () => void;
 	children?:React.ReactNode
 }
+
+type useModalStoreType = {
+	isOpen: boolean;
+	onOpen: () => void;
+	onClose: () =>void;
+
+}
