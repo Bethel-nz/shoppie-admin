@@ -6,8 +6,12 @@ import { useEffect } from 'react';
 
 export default function SetupPage() {
 	const { isOpen, onOpen } = useModalStore();
+
 	useEffect(() => {
-		if (!isOpen) onOpen();
+		if (!isOpen) {
+			onOpen();
+		}
 	}, [isOpen, onOpen]);
+
 	return <div className='p-4'>root</div>;
 }
