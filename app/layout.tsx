@@ -5,6 +5,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { ModalProvider } from '@/contexts/modal-provider';
 
 import './globals.css';
+import { ToastProvider } from '@/contexts/toast-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
 			<html lang='en'>
 				<body className={inter.className}>
 					<main>
+						<ToastProvider />
 						<ModalProvider />
 						{children}
 					</main>
