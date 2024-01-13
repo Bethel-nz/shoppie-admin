@@ -12,3 +12,9 @@ type useModalStoreType = {
 	onClose: () =>void;
 
 }
+
+type DashboardPageProps = {
+	params: {
+		storeid:string
+	}
+}
