@@ -13,4 +13,6 @@ export default async function layout({ children }: { children: ReactNode }) {
 		},
 	});
 	if (store) redirect(`/${store!.id}`);
+
+	return <>{children}</>;
 }

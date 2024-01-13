@@ -1,6 +1,6 @@
 'use client';
 
-import { StoreModals } from '@/components/ui/modals/store-modals';
+import { StoreModals } from '@/components/modals/store-modals';
 import { useState, useEffect } from 'react';
 
 export const ModalProvider = () => {
