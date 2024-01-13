@@ -20,12 +20,13 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { zInferFormSchema } from '@/types';
 
 export const StoreModals = () => {
 	const { isOpen, onClose } = useModalStore();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const form = useForm<z.infer<typeof formSchema>>({
+	const form = useForm<zInferFormSchema>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			name: '',
