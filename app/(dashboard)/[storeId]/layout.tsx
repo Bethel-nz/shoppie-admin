@@ -3,7 +3,7 @@ import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
-export default async function DashboardLaout({
+export default async function DashboardLayout({
 	children,
 	params,
 }: {
