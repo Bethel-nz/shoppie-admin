@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client"
 import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
+import logger from '@/lib/logger'
 
 export async function PATCH(req: Request,{params:{storeid}}:{params:{storeid:string}}) {
 	try {
@@ -22,7 +23,7 @@ export async function PATCH(req: Request,{params:{storeid}}:{params:{storeid:str
 		})
 		return NextResponse.json(store)
 	} catch (error) {
-		console.error(`[STORE_PATCH]:`, error)
+		logger(`[STORE_PATCH]:`, error)
 		return new NextResponse('Internal Server Error',{status : 500})
 	}
 }
