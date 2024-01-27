@@ -21,6 +21,12 @@ type AlertModalProps = {
 	loading: boolean;
 }
 
+type ApiAlertProps = {
+	title: string
+	description: string;
+	variant:"public" | "admin"
+}
+
 type useModalStoreType = {
 	isOpen: boolean;
 	onOpen: () => void;

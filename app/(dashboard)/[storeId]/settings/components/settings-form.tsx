@@ -23,13 +23,15 @@ import axios from 'axios';
 import { useParams, useRouter } from 'next/navigation';
 import { AlertModal } from '@/components/modals/alert-modal';
 import logger from '@/lib/logger';
+import { ApiAlert } from '@/components/ui/api-alert';
+import { useOrigin } from '@/hooks/use-origin';
 
 const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const { storeid } = useParams();
 	const router = useRouter();
-
+	const origin = useOrigin();
 	const form = useForm<zInferFormSchema>({
 		resolver: zodResolver(formSchema),
 		defaultValues: initialData,
@@ -110,6 +112,12 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 					</Button>
 				</form>
 			</Form>
+			<Separator />
+			<ApiAlert
+				title='NEXT_PUBLIC_API_URL'
+				description={`${origin}/api/${storeid}`}
+				variant={'public'}
+			/>
 		</>
 	);
 };
