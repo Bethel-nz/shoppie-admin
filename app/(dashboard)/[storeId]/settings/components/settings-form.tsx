@@ -18,10 +18,15 @@ import {
 	FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { useParams, useRouter } from 'next/navigation';
 
 const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const { storeid } = useParams();
+	const router = useRouter();
 
 	const form = useForm<zInferFormSchema>({
 		resolver: zodResolver(formSchema),
@@ -29,7 +34,16 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 	});
 
 	const onSubmit = async (data: zInferFormSchema) => {
-		console.log(data);
+		try {
+			setLoading(true);
+			await axios.patch(`/api/stores/${storeid}`, data);
+			router.refresh();
+			toast.success(`store renamed to - ${data.name}`);
+		} catch (error) {
+			toast.error('Something went wrong!');
+		} finally {
+			setLoading(false);
+		}
 	};
 	return (
 		<>
