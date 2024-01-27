@@ -7,12 +7,17 @@ import React, { HTMLAttributes } from 'react';
 
 export function SubNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 	const pathname = usePathname();
-	const params = useParams();
+	const { storeid } = useParams();
 	const routes = [
 		{
-			href: `/${params.storeid}/settings`,
+			href: `/${storeid}`,
+			label: 'Overview',
+			active: pathname === `/${storeid}`,
+		},
+		{
+			href: `/${storeid}/settings`,
 			label: 'Settings',
-			active: pathname === `/${params.storeid}/settings`,
+			active: pathname === `/${storeid}/settings`,
 		},
 	];
 	return (
