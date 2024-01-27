@@ -14,6 +14,13 @@ type ModalProps= {
 	children?:React.ReactNode
 }
 
+type AlertModalProps = {
+	isOpen: boolean;
+	onClose: () => void;
+	onConfirm: () => void;
+	loading: boolean;
+}
+
 type useModalStoreType = {
 	isOpen: boolean;
 	onOpen: () => void;
