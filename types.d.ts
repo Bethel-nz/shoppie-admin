@@ -1,10 +1,10 @@
 import { PopoverTrigger } from "@/components/ui/popover";
-import { Store } from "@prisma/client";
+import { Billboard, Store } from "@prisma/client";
 import { ComponentPropsWithoutRef } from "react";
-import formSchema from "./lib/schema";
+import formSchema, { billboardSchema } from "./lib/schema";
 import * as z from 'zod'
 
-type zInferFormSchema= z.infer<typeof formSchema> 
+type zInferFormSchema= z.infer<typeof formSchema> | z.infer<typeof billboardSchema>
 
 type ModalProps= {
 	title: string;
@@ -36,17 +36,20 @@ type useModalStoreType = {
 
 interface DashboardPageProps  {
 	params: {
-		storeid:string
+		store_id:string
 	}
 }
 
 interface SettingPageProps {
 	params: {
-		storeid:string
+		store_id:string
 	}
 }
 interface SettingsFormProps {
 	initialData: Store
+}
+interface BillboardFormProps {
+	initialData: Billboard | null
 }
 
 type HeadingProps= {

@@ -29,7 +29,7 @@ import {
 
 function StoreSwitcher({ className, items = [] }: StoreSwitcherProps) {
 	const { onOpen } = useModalStore();
-	const { storeid } = useParams();
+	const { store_id } = useParams();
 	const router = useRouter();
 
 	const formattedItems = items.map((item) => ({
@@ -42,7 +42,7 @@ function StoreSwitcher({ className, items = [] }: StoreSwitcherProps) {
 		setOpen(false);
 		router.push(`/${store.value}`);
 	};
-	const currentStore = formattedItems.find((item) => item.value === storeid);
+	const currentStore = formattedItems.find((item) => item.value === store_id);
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>

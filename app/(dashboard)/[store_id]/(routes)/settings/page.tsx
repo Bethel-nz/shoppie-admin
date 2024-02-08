@@ -5,13 +5,13 @@ import { redirect } from 'next/navigation';
 import React, { FC } from 'react';
 import SettingsForm from './components/settings-form';
 
-const page: FC<SettingPageProps> = async ({ params: { storeid } }) => {
+const page: FC<SettingPageProps> = async ({ params: { store_id } }) => {
 	const { userId } = auth();
 	if (!userId) redirect('/sign-in');
 
 	const store = await prisma.store.findFirst({
 		where: {
-			id: storeid,
+			id: store_id,
 			userId,
 		},
 	});

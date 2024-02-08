@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import { SettingsFormProps, zInferFormSchema } from '@/types';
 import { Trash } from 'lucide-react';
 import { FC, useState } from 'react';
-import formSchema from '@/lib/schema';
+import { formSchema } from '@/lib/schema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
@@ -29,7 +29,7 @@ import { useOrigin } from '@/hooks/use-origin';
 const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 	const [open, setOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const { storeid } = useParams();
+	const { store_id } = useParams();
 	const router = useRouter();
 	const origin = useOrigin();
 	const form = useForm<zInferFormSchema>({
@@ -40,7 +40,7 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 	const onSubmit = async (data: zInferFormSchema) => {
 		try {
 			setLoading(true);
-			await axios.patch(`/api/stores/${storeid}`, data);
+			await axios.patch(`/api/stores/${store_id}`, data);
 			router.refresh();
 			toast.success(`store renamed to - ${data.name}`);
 		} catch (error) {
@@ -52,7 +52,7 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 	const onDelete = async () => {
 		try {
 			setLoading(true);
-			await axios.delete(`/api/stores/${storeid}`);
+			await axios.delete(`/api/stores/${store_id}`);
 			router.refresh();
 			router.push('/');
 			toast.success('Store deleted');
@@ -116,7 +116,7 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
 			<Separator />
 			<ApiAlert
 				title='NEXT_PUBLIC_API_URL'
-				description={`${origin}/api/${storeid}`}
+				description={`${origin}/api/${store_id}`}
 				variant={'public'}
 			/>
 		</>

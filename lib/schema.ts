@@ -4,4 +4,9 @@ const formSchema = z.object({
 	name:z.string().min(1)
 })
 
-export default formSchema
+const billboardSchema = z.object({
+  label: z.string().min(1),
+  imageUrl: z.string().min(1),
+});
+
+export { formSchema , billboardSchema}

@@ -7,17 +7,22 @@ import React, { HTMLAttributes } from 'react';
 
 export function SubNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 	const pathname = usePathname();
-	const { storeid } = useParams();
+	const { store_id } = useParams();
 	const routes = [
 		{
-			href: `/${storeid}`,
+			href: `/${store_id}`,
 			label: 'Overview',
-			active: pathname === `/${storeid}`,
+			active: pathname === `/${store_id}`,
 		},
 		{
-			href: `/${storeid}/settings`,
+			href: `/${store_id}/billboards`,
+			label: 'Billboards',
+			active: pathname === `/${store_id}/billboards`,
+		},
+		{
+			href: `/${store_id}/settings`,
 			label: 'Settings',
-			active: pathname === `/${storeid}/settings`,
+			active: pathname === `/${store_id}/settings`,
 		},
 	];
 	return (
@@ -29,8 +34,8 @@ export function SubNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 					className={cn(
 						'text-sm font-medium transition-colors hover:text-primary',
 						route.active
-							? 'text-black dark:text-white'
-							: 'text-muted-foreground'
+							? 'text-black dark:text-white font-semibold'
+							: 'text-muted-foreground font-regular'
 					)}
 				>
 					{route.label}

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 
-import formSchema from '@/lib/schema';
+import { formSchema } from '@/lib/schema';
 
 import { Modal } from '@/components/ui/modal';
 import { useModalStore } from '@/hooks/use-modal-store';
