@@ -7,7 +7,7 @@ import { CellAction } from './cell-action';
 export type BillboardColumn = {
 	id: string;
 	label: string;
-	createdAt: string;
+	createdAt: Date;
 };
 
 export const columns: ColumnDef<BillboardColumn>[] = [
@@ -20,6 +20,7 @@ export const columns: ColumnDef<BillboardColumn>[] = [
 		header: 'Date',
 	},
 	{
+		header: 'Actions',
 		id: 'actions',
 		cell: ({ row }) => <CellAction data={row.original} />,
 	},

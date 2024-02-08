@@ -3,9 +3,13 @@
 import { Button } from '@/components/ui/button';
 import Heading from '@/components/ui/heading';
 import { Plus } from 'lucide-react';
+
+import { DataTable } from '@/components/ui/data-table';
 import { Separator } from '@/components/ui/separator';
 import { useRouter, useParams } from 'next/navigation';
 import { BillboardClientProps } from '@/types';
+import { columns } from './columns';
+import { ApiList } from '@/components/ui/api-list';
 
 export const BillboardClient = ({ data }: BillboardClientProps) => {
 	const router = useRouter();
@@ -24,6 +28,10 @@ export const BillboardClient = ({ data }: BillboardClientProps) => {
 				</Button>
 			</div>
 			<Separator />
+			<DataTable searchKey='label' columns={columns} data={data} />
+			<Heading title='API' description='API Calls for Billboards' />
+			<Separator />
+			<ApiList entityName='billboards' entityIdName='billboardId' />
 		</>
 	);
 };
