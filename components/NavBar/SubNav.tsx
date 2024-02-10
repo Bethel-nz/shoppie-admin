@@ -20,6 +20,31 @@ export function SubNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 			active: pathname === `/${store_id}/billboards`,
 		},
 		{
+			href: `/${store_id}/categories`,
+			label: 'Categories',
+			active: pathname === `/${store_id}/categories`,
+		},
+		{
+			href: `/${store_id}/sizes`,
+			label: 'Sizes',
+			active: pathname === `/${store_id}/sizes`,
+		},
+		{
+			href: `/${store_id}/colors`,
+			label: 'Colors',
+			active: pathname === `/${store_id}/colors`,
+		},
+		{
+			href: `/${store_id}/products`,
+			label: 'Products',
+			active: pathname === `/${store_id}/products`,
+		},
+		{
+			href: `/${store_id}/orders`,
+			label: 'Orders',
+			active: pathname === `/${store_id}/orders`,
+		},
+		{
 			href: `/${store_id}/settings`,
 			label: 'Settings',
 			active: pathname === `/${store_id}/settings`,
