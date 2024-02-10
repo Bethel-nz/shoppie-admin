@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 
 import prisma from '@/prisma/client';
+import logger from '@/lib/logger';
 
 export async function POST(
 	req: Request,
@@ -51,7 +52,7 @@ export async function POST(
 
 		return NextResponse.json(size);
 	} catch (error) {
-		console.log('[SIZES_POST]', error);
+		logger('[SIZES_POST]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }
@@ -73,7 +74,7 @@ export async function GET(
 
 		return NextResponse.json(sizes);
 	} catch (error) {
-		console.log('[SIZES_GET]', error);
+		logger('[SIZES_GET]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }

@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import prisma from '@/prisma/client';
 import { auth } from '@clerk/nextjs';
 
+import logger from '@/lib/logger';
 export async function POST(
 	req: Request,
 	{ params }: { params: { store_id: string } }
@@ -51,7 +52,7 @@ export async function POST(
 
 		return NextResponse.json(color);
 	} catch (error) {
-		console.log('[COLORS_POST]', error);
+		logger('[COLORS_POST]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }
@@ -73,7 +74,7 @@ export async function GET(
 
 		return NextResponse.json(colors);
 	} catch (error) {
-		console.log('[COLORS_GET]', error);
+		logger('[COLORS_GET]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }

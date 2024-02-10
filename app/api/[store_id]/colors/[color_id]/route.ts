@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs';
 
 import prisma from '@/prisma/client';
+import logger from '@/lib/logger';
 
 export async function GET(
 	req: Request,
@@ -20,7 +21,7 @@ export async function GET(
 
 		return NextResponse.json(color);
 	} catch (error) {
-		console.log('[COLOR_GET]', error);
+		logger('[COLOR_GET]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }
@@ -59,7 +60,7 @@ export async function DELETE(
 
 		return NextResponse.json(color);
 	} catch (error) {
-		console.log('[COLOR_DELETE]', error);
+		logger('[COLOR_DELETE]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }
@@ -114,7 +115,7 @@ export async function PATCH(
 
 		return NextResponse.json(color);
 	} catch (error) {
-		console.log('[COLOR_PATCH]', error);
+		logger('[COLOR_PATCH]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }

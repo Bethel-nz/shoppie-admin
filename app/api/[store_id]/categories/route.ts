@@ -3,6 +3,7 @@ import { auth } from '@clerk/nextjs';
 
 import prisma from '@/prisma/client';
 
+import logger from '@/lib/logger';
 export async function POST(
 	req: Request,
 	{ params }: { params: { store_id: string } }
@@ -51,7 +52,7 @@ export async function POST(
 
 		return NextResponse.json(category);
 	} catch (error) {
-		console.log('[CATEGORIES_POST]', error);
+		logger('[CATEGORIES_POST]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }
@@ -73,7 +74,7 @@ export async function GET(
 
 		return NextResponse.json(categories);
 	} catch (error) {
-		console.log('[CATEGORIES_GET]', error);
+		logger('[CATEGORIES_GET]', error);
 		return new NextResponse('Internal error', { status: 500 });
 	}
 }
