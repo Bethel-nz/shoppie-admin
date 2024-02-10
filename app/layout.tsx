@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 
 import { ClerkProvider } from '@clerk/nextjs';
 import { ModalProvider } from '@/contexts/modal-provider';
+import { ThemeProvider } from '@/contexts/theme-provider';
 
 import './globals.css';
 import { ToastProvider } from '@/contexts/toast-provider';
@@ -22,11 +23,13 @@ export default function RootLayout({
 		<ClerkProvider>
 			<html lang='en'>
 				<body className={inter.className}>
-					<main>
-						<ToastProvider />
-						<ModalProvider />
-						{children}
-					</main>
+					<ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
+						<main className='transition-colors duration-700'>
+							<ToastProvider />
+							<ModalProvider />
+							{children}
+						</main>
+					</ThemeProvider>
 				</body>
 			</html>
 		</ClerkProvider>
