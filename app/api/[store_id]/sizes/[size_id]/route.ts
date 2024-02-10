@@ -5,16 +5,16 @@ import { auth } from '@clerk/nextjs';
 
 export async function GET(
 	req: Request,
-	{ params }: { params: { sizeId: string } }
+	{ params }: { params: { size_id: string } }
 ) {
 	try {
-		if (!params.sizeId) {
+		if (!params.size_id) {
 			return new NextResponse('Size id is required', { status: 400 });
 		}
 
 		const size = await prisma.size.findUnique({
 			where: {
-				id: params.sizeId,
+				id: params.size_id,
 			},
 		});
 
@@ -27,7 +27,7 @@ export async function GET(
 
 export async function DELETE(
 	req: Request,
-	{ params }: { params: { sizeId: string; store_id: string } }
+	{ params }: { params: { size_id: string; store_id: string } }
 ) {
 	try {
 		const { userId } = auth();
@@ -36,7 +36,7 @@ export async function DELETE(
 			return new NextResponse('Unauthenticated', { status: 403 });
 		}
 
-		if (!params.sizeId) {
+		if (!params.size_id) {
 			return new NextResponse('Size id is required', { status: 400 });
 		}
 
@@ -53,7 +53,7 @@ export async function DELETE(
 
 		const size = await prisma.size.delete({
 			where: {
-				id: params.sizeId,
+				id: params.size_id,
 			},
 		});
 
@@ -66,7 +66,7 @@ export async function DELETE(
 
 export async function PATCH(
 	req: Request,
-	{ params }: { params: { sizeId: string; store_id: string } }
+	{ params }: { params: { size_id: string; store_id: string } }
 ) {
 	try {
 		const { userId } = auth();
@@ -87,7 +87,7 @@ export async function PATCH(
 			return new NextResponse('Value is required', { status: 400 });
 		}
 
-		if (!params.sizeId) {
+		if (!params.size_id) {
 			return new NextResponse('Size id is required', { status: 400 });
 		}
 
@@ -104,7 +104,7 @@ export async function PATCH(
 
 		const size = await prisma.size.update({
 			where: {
-				id: params.sizeId,
+				id: params.size_id,
 			},
 			data: {
 				name,
