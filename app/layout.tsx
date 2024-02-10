@@ -10,8 +10,17 @@ import { ToastProvider } from '@/contexts/toast-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Shoppie - Admin Dashboard',
-	description: 'Admin Dashboard for shoppie frontend store',
+	title: 'Shoppie',
+	description:
+		'A CMS-based store for easy e-commerce store creation integration',
+	authors: [
+		{
+			name: 'Bethel Nzekea',
+		},
+		{
+			name: 'Anthonio Erdeljac',
+		},
+	],
 };
 
 export default function RootLayout({

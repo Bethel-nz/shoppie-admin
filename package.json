@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev",
 		"generate": "yarn prisma generate && yarn prisma db push && next dev",
-		"build": "next build",
+		"build": "yarn prisma generate && yarn prisma db push && next build",
 		"start": "next start",
 		"lint": "next lint"
 	},
