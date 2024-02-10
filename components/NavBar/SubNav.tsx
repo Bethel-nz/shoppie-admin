@@ -54,6 +54,7 @@ export function SubNav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 		<nav className={cn('flex items-center space-x-4 lg:space-x-6', className)}>
 			{routes.map((route) => (
 				<Link
+					prefetch={true}
 					key={route.href}
 					href={route.href}
 					className={cn(
